@@ -36,21 +36,43 @@ function format(description: string) : Food[] {
   });
 }
 
-const proxify = (url: string) =>
-  (window.location.hostname == 'localhost' ? 'https://corsproxy.io/?url=' : 'https://api.allorigins.win/raw?url=')
-   + encodeURIComponent(url)
+async function fetchProxied(url: string) : Promise<Response> {
+  if (window.location.hostname == 'localhost')
+    return fetch('https://corsproxy.io/?url=' + encodeURIComponent(url));
+  for (const proxy of proxies) {
+    try {
+      console.log("Fetching through proxy", proxy, "(" + url + ")");
+      const trailing = proxy.endsWith("/") ? url : encodeURIComponent(url);
+      const response = await fetch(proxy + trailing);
+      if (response.ok) {
+        return response;
+      }
+      console.warn("Failed to fetch through proxy");
+    } catch (e) {
+      console.error("Fetch through proxy failed", e);
+    }
+  }
+  throw new Error("Couldn't find a proxy service that would work");
+}
 
-async function loadContent(url: string) : Promise<Aromi> {
-  const proxiedUrl = proxify(url);
+const proxies = [
+  'https://proxy.cors.sh/fetch/',
+  'https://api.allorigins.win/raw?url='
+]
+
+async function fetchContent(url: string) : Promise<Aromi> {
 
   const now = Date.now();
-  console.log("Fetching through proxy", proxiedUrl, "(" + url + ")");
-  const response = await fetch(proxiedUrl);
+  const response = await fetchProxied(url);
   console.log("Fetch took " + (Date.now() - now) + "ms");
 
-  const text = await response.text();
+  const xmlText = await response.text();
+  return loadContent(url, xmlText);
+}
+
+function loadContent(url: string, xmlText: string) : Aromi {
   const parser = new XMLParser();
-  const xml: any = parser.parse(text);
+  const xml: any = parser.parse(xmlText);
 
   const areEqual = (obj1: Food, obj2: Food) => obj1.name == obj2.name;
   const lunches: Lunch[] = xml.rss.channel.item.map((o: any) => {
@@ -147,7 +169,7 @@ export function useAromi(url: string) : Aromi {
   useEffect(() => {
     if (!isExpired(state))
       return;
-    loadContent(url).then(content => {
+    fetchContent(url).then(content => {
       saveCache(url, content);
       setState(content)
     });

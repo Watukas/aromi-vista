@@ -41,7 +41,6 @@ This project is in no way affiliated with <a href="https://www.cgi.com/fi/fi">CG
 <img style="margin-right:8px;transform:translate(4px, 4px)" src="https://aromimenu.cgisaas.fi/EspooAromieMenus/FI/Default/ESPOO/Kaitaankoulu/ThemePicture.aspx?Id=cf489641-3acc-462a-97f8-60e95c271a39&FileName=icon_rss.png" height=15/> and select "Copy link address"
 * Paste the URL into the form on <a href="https://watukas.github.io/aromi-vista">the front page</a> and press enter
 
-<!-- MARKDOWN LINKS -->
 [license-shield]: https://img.shields.io/github/license/watukas/aromi-vista.svg?style=for-the-badge
 [license-url]: https://github.com/watukas/aromi-vista/blob/main/LICENSE
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

@@ -21,7 +21,7 @@ function SourceSelect({setSource} : {setSource: (newSource: string | null) => vo
 
     const items = storage.map(aromi => {
         return <div key={aromi.url} style={{display:"flex", gap:8}}>
-            <span style={{fontSize:18, fontWeight:600, cursor:"pointer", textDecoration:"underline"}} onContextMenu={e => {
+            <span title="Right-click to Paste" style={{fontSize:18, fontWeight:600, cursor:"pointer", textDecoration:"underline"}} onContextMenu={e => {
                 e.preventDefault()
                 setInput(aromi.url)
             }} onClick={e => {
@@ -48,23 +48,15 @@ function SourceSelect({setSource} : {setSource: (newSource: string | null) => vo
         window.location.reload();
     };
 
-    const inputStyle = {
-        width: "min(95vw, 1320px)",
-        height: "42px",
-        fontSize: "18px",
-        borderRadius: 12,
-
-        background: "#ccc",
-        color: "black",
-        border: "none",
-        textAlign: "center"
-    } as React.CSSProperties;
-
+    const inputStyle = input.length > 0 ?
+        {width: "min(95vw, 1220px)", height: "30px"}
+    :
+        {width: "200px", height: "20px"}
     return <div style={{display:"flex", flexDirection:"column", alignItems:"center", textAlign:"center", gap:128}}>
         <form onSubmit={onSubmit} style={{display:"flex", flexDirection:"column", alignItems:"center", gap:8}}>
-            <span style={{fontSize:27, fontWeight:900}}>Provide Source URL</span>
-            <input placeholder="..." value={input} onChange={e => setInput(e.target.value)} style={inputStyle}></input>
-            <span style={{fontSize:16, fontWeight:500}}>
+            <span style={{color:"#222", fontSize:27, fontWeight:900}}>Provide Source URL</span>
+            <input placeholder="> Paste here <" value={input} style={inputStyle} onChange={e => setInput(e.target.value)}></input>
+            <span style={{fontFamily:"Smooch Sans", fontSize:18, fontWeight:500}}>
                 Search for sources from <a style={{color:"#ff55bb"}} target="_blank" href="https://aromimenu.cgisaas.fi/EspooAromieMenus/FI/Default/ESPOO">Espoo Catering</a>
             </span>
         </form>

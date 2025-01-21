@@ -36,29 +36,16 @@ function format(description: string) : Food[] {
   });
 }
 
+const proxy = atob("aHR0cHM6Ly8wZXdjaHYwNmM1LmV4ZWN1dGUtYXBpLmV1LW5vcnRoLTEuYW1hem9uYXdzLmNvbS9wcm94eS8=");
+
 async function fetchProxied(url: string) : Promise<Response> {
+  const prefix = "https://aromimenu.cgisaas.fi/";
+  if (!url.toLowerCase().startsWith(prefix))
+    throw new Error("URL must begin with '" + prefix + "'");
   if (window.location.hostname == 'localhost')
     return fetch('https://corsproxy.io/?url=' + encodeURIComponent(url));
-  for (const proxy of proxies) {
-    try {
-      console.log("Fetching through proxy", proxy, "(" + url + ")");
-      const trailing = proxy.endsWith("/") ? url : encodeURIComponent(url);
-      const response = await fetch(proxy + trailing);
-      if (response.ok) {
-        return response;
-      }
-      console.warn("Failed to fetch through proxy");
-    } catch (e) {
-      console.error("Fetch through proxy failed", e);
-    }
-  }
-  throw new Error("Couldn't find a proxy service that would work");
+  return fetch(proxy + url.substring(prefix.length));
 }
-
-const proxies = [
-  'https://proxy.cors.sh/fetch/',
-  'https://api.allorigins.win/raw?url='
-]
 
 async function fetchContent(url: string) : Promise<Aromi> {
 
@@ -163,7 +150,7 @@ export function useAromi(url: string) : Aromi {
   const [state, setState] = useState<Aromi>(() => {
     const cached = loadCache(url);
     if (cached == null)
-      return {name:"Loading...", url:"", schedule:[]}
+      return {name:"⌛️", url:"", schedule:[]}
     return cached;
   });
   useEffect(() => {
@@ -172,6 +159,8 @@ export function useAromi(url: string) : Aromi {
     fetchContent(url).then(content => {
       saveCache(url, content);
       setState(content)
+    }).catch((e: Error) => {
+      setState({name:e.message, url:"", schedule:[]})
     });
   }, [url])
   return state;

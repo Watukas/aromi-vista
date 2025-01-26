@@ -1,16 +1,20 @@
 import { XMLParser } from 'fast-xml-parser';
 import { useEffect, useState } from 'react';
+import { Feed } from './SourceSelect';
+import { isURL } from './App';
 
 export interface Aromi {
   name: string;
   url: string;
+  unix: number;
   schedule: Lunch[];
 }
 
 export interface ParsedDate {
   id: string;
-  weekday: string;
   unix: number;
+  weekdayShort: string;
+  weekdayLong: string;
 }
 
 export interface Lunch {
@@ -36,33 +40,41 @@ function format(description: string) : Food[] {
   });
 }
 
-const proxy = atob("aHR0cHM6Ly8wZXdjaHYwNmM1LmV4ZWN1dGUtYXBpLmV1LW5vcnRoLTEuYW1hem9uYXdzLmNvbS9wcm94eS8=");
+const defaultProxy = atob("aHR0cHM6Ly9hcm9taS1wcm94eS53YXR1a2FzLndvcmtlcnMuZGV2Lz91cmw9");
 
-async function fetchProxied(url: string) : Promise<Response> {
-  const prefix = "https://aromimenu.cgisaas.fi/";
-  if (!url.toLowerCase().startsWith(prefix))
-    throw new Error("URL must begin with '" + prefix + "'");
+async function fetchProxied(feed: Feed) : Promise<Response> {
+  if (!isURL(feed.source, true))
+    throw new Error("URL must begin with 'https://aromimenu.cgisaas.fi/'");
   if (window.location.hostname == 'localhost')
-    return fetch('https://corsproxy.io/?url=' + encodeURIComponent(url));
-  return fetch(proxy + url.substring(prefix.length));
+    return fetch('https://corsproxy.io/?url=' + encodeURIComponent(feed.source));
+  const proxy = feed.proxy ?? defaultProxy;
+
+  const url = proxy.endsWith("/") ? feed.source : encodeURIComponent(feed.source);
+  return fetch(proxy + url);
 }
 
-async function fetchContent(url: string) : Promise<Aromi> {
+async function fetchContent(feed: Feed) : Promise<Aromi> {
 
   const now = Date.now();
-  const response = await fetchProxied(url);
+  const response = await fetchProxied(feed);
   console.log("Fetch took " + (Date.now() - now) + "ms");
 
   const xmlText = await response.text();
-  return loadContent(url, xmlText);
+  return loadContent(feed.source, xmlText);
 }
 
 function loadContent(url: string, xmlText: string) : Aromi {
   const parser = new XMLParser();
   const xml: any = parser.parse(xmlText);
 
+  console.log('Parsed', xml);
+
   const areEqual = (obj1: Food, obj2: Food) => obj1.name == obj2.name;
-  const lunches: Lunch[] = xml.rss.channel.item.map((o: any) => {
+
+  const item = xml.rss.channel.item;
+  const items = Array.isArray(item) ? item : [item];
+
+  const lunches: Lunch[] = items.map((o: any) => {
     const array = o.description.split("<br><br>");
     const mainCourse = format(array[1]);
     const veganCourse = format(array[0]);
@@ -72,7 +84,7 @@ function loadContent(url: string, xmlText: string) : Aromi {
     const secondary = veganCourse.filter(item2 => !mainCourse.some(item1 => areEqual(item1, item2)));
     return {date:parseDate(o.title), primary:primary, secondary:secondary, common:common} as Lunch;
   })
-  return {name:xml.rss.channel.title.substring(4), url:url, schedule:lunches};
+  return {name:xml.rss.channel.title.substring(4), url:url, unix:Date.now(), schedule:lunches};
 }
 
 function loadCache(url: string) : Aromi | null {
@@ -105,32 +117,40 @@ function saveCache(url: string, aromi: Aromi) {
 }
 
 function parseDate(date: string) : ParsedDate {
-  const weekday = date.charAt(0).toUpperCase() + date.substring(1, date.indexOf(' '));
   const dateWithoutWeekday = date.split(" ").slice(1).join(" ");
   const formats = [
     { // FI: dd.MM.yyyy
       regex: /(\d{1,2})\.(\d{1,2})\.(\d{4})/,
       parse: (m: RegExpMatchArray) => `${m[3]}-${m[2]}-${m[1]}`,
+      locale: 'fi-FI'
     },
     { // SV: yyyy-MM-dd
       regex: /(\d{4})-(\d{1,2})-(\d{1,2})/,
       parse: (m: RegExpMatchArray) => `${m[1]}-${m[2]}-${m[3]}`,
+      locale: 'sv-SE'
     },
     { // EN: MM/dd/yyyy
       regex: /(\d{1,2})\/(\d{1,2})\/(\d{4})/,
       parse: (m: RegExpMatchArray) => `${m[3]}-${m[1]}-${m[2]}`,
+      locale: 'en-US'
     }
   ];
 
-  for (const { regex, parse } of formats) {
+  const formatWeekday = (locale: string, date: Date, long: boolean) => {
+    const weekday = date.toLocaleString(locale, {weekday:long ? "long" : "short"})
+    return weekday.charAt(0).toUpperCase() + weekday.substring(1);
+  };
+
+  for (const { regex, parse, locale } of formats) {
     const match = dateWithoutWeekday.match(regex);
     if (match) {
-      return {weekday:weekday, id:date, unix:new Date(parse(match)).getTime()};
+      const time = new Date(parse(match))
+      return {weekdayShort:formatWeekday(locale, time, false), weekdayLong:formatWeekday(locale, time, true), id:date, unix:time.getTime()};
     }
   }
 
   console.error("Unknown date format", date);
-  return {weekday: date.substring(0, 3), id:date, unix:new Date(date).getTime()};
+  return {weekdayShort: date.substring(0, 3), weekdayLong: date.substring(0, 3), id:date, unix:new Date(date).getTime()};
 }
 
 function isExpired(aromi: Aromi) {
@@ -146,22 +166,23 @@ function isExpired(aromi: Aromi) {
 }
 
 // Example Usage
-export function useAromi(url: string) : Aromi {
+export function useAromi(feed: Feed) : Aromi {
   const [state, setState] = useState<Aromi>(() => {
-    const cached = loadCache(url);
+    const cached = loadCache(feed.source);
     if (cached == null)
-      return {name:"⌛️", url:"", schedule:[]}
+      return {name:"⌛️", url:"", unix:Date.now(), schedule:[]}
     return cached;
   });
   useEffect(() => {
     if (!isExpired(state))
       return;
-    fetchContent(url).then(content => {
-      saveCache(url, content);
+    fetchContent(feed).then(content => {
+      saveCache(feed.source, content);
       setState(content)
     }).catch((e: Error) => {
-      setState({name:e.message, url:"", schedule:[]})
+      console.error(e);
+      setState({name:e.message, url:"", unix:Date.now(), schedule:[]})
     });
-  }, [url])
+  }, [feed.source])
   return state;
 }

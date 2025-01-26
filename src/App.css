@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Smooch+Sans:wght@100..900&display=swap');
 
 html, body, #root {
   margin: 0;
@@ -17,9 +17,6 @@ html, body, #root {
 }
 
 #root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -33,7 +30,7 @@ html, body, #root {
 
 input {
   padding: 10px 15px;
-  font-family: monospace, Noto Sans Hatran;
+  font-family: monospace;
   text-align: center;
   color: black;
   font-size: 16px;
@@ -54,18 +51,16 @@ input:focus {
   box-shadow: 4px 4px 12px #b3b3b3, -4px -4px 12px #ffffff;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  background: #f9f9f9;
-  font-family: Arial, sans-serif;
+input[type="submit"] {
+  width: 180px;
+  height: 40px;
+  border: #777 2px solid;
+  cursor: pointer;
 }
 
-.paste-field {
-  width: 100%;
-  max-width: 500px;
-  margin: 20px;
+input:disabled {
+  border: none;
+  color: #aaa;
+  background: #ddd;
+  cursor: not-allowed;
 }

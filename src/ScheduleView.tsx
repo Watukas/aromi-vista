@@ -1,67 +1,75 @@
-import { useEffect, useState } from "react";
 import { Food, Lunch, useAromi } from "./aromi";
+import { useScale } from "./App";
+import React, { useRef } from "react";
+import { Feed } from "./SourceSelect";
 
-function useScale() {
-    const query = new URLSearchParams(window.location.search);
-    const target = parseFloat(query.get("scale") ?? "1.75");
-    const [ratio, setRatio] = useState(window.devicePixelRatio);
-    useEffect(() => {
-        const listener = () => setRatio(window.devicePixelRatio);
-        window.addEventListener('resize', listener);
-        return () => window.removeEventListener('resize', listener);
-    }, []);
-    const scale = target / ratio;
-    return scale;
+function ScheduleView({feed, setFeed}: {feed: Feed, setFeed: (newFeed: Feed | null) => void}) {
+    const content = useAromi(feed);
+    const ref = useRef<HTMLDivElement>(null);
+    const scale = useScale(content, ref.current);
+
+    const title = content.url ? feed.title ?? content.name : '⌛';
+
+    return (
+    <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        width: "100%",
+    }}>
+        <div ref={ref} style={{transition: "transform 0.3s ease", transform:`scale(${scale})`}}>
+            <div style={{display:"flex", width:"100%", height:"100%", justifyContent:"center"}}>
+                <h2 onClick={() => setFeed(null)} style={{ fontFamily:"Bebas Neue", padding:"0 0 24px 0", margin:0, cursor:"pointer", textDecoration:title.length > 5 ? "underline" : undefined, textAlign: "center" }}>
+                    {title}
+                </h2>
+            </div>
+            <div style={{display:"grid", gridTemplateColumns:"max-content minmax(200px, auto) 1fr", gap:16}}>
+                {content.schedule.map((lunch, index) => <React.Fragment key={lunch.date.weekdayShort}>
+                    <LunchElement lunch={lunch}/>
+                    {index == content.schedule.length - 1 ||
+                        <div style={{gridColumn:"span 3", width:"100%", height:1, background:"#555", transform: "scale(1.00001)"}}></div>
+                    }
+                </React.Fragment>)}
+            </div>
+        </div>
+    </div>)
 }
 
-function ScheduleView({source, setSource}: {source: string, setSource: (newSource: string | null) => void}) {
-    const content = useAromi(source);
-    const scale = useScale();
-
-    return <div style={{transform:`scale(${scale})`}}>
-        <div style={{display:"flex", gap:8}}>
-            <h2 style={{cursor:"pointer"}} onClick={() => setSource(null)}>{content.name}</h2>
-        </div>
-        <div style={{display:"flex", flexDirection:"column", gap:16}}>
-            {content.schedule.map(lunch => <LunchElement lunch={lunch}/>)}
-        </div>
-    </div>
+function LunchElement(props : {lunch: Lunch} & React.HTMLAttributes<HTMLDivElement>) {
+    const today = false;
+    const lunch = props.lunch;
+    const date = new Date(lunch.date.unix);
+    return (
+            <div {...props} style={{display:"contents"}}>
+                <div style={{display:"flex", padding:"0 16px 0 16px", flexDirection:"column", alignItems:"center", borderRight:"#ccc 1px solid"}}>
+                    <strong>{today ? "Tänään" : lunch.date.weekdayLong}</strong>
+                    <span style={{fontWeight:200}}>{date.getDate() + "." + (date.getMonth() + 1) + "."}</span>
+                </div>
+                <div style={{paddingRight:16, borderRight:"#ccc 1px solid"}}>
+                    <FoodList key="primary" meal={lunch.primary}/>
+                    <FoodList key="secondary" meal={lunch.secondary}/>
+                </div>
+                <div style={{paddingRight:16, display:"flex", alignItems:"center"}}>
+                    <FoodList key="common" meal={lunch.common}/>
+                </div>
+            </div>)
 }
 
 function FoodList({meal} : {meal: Food[]}) : React.ReactNode {
     if (meal.length < 2)
         return meal.length == 1 ? <FoodElement food={meal[0]}/> : null;
-    const list = meal.reduce((acc, food, index) => {
-        if (index > 0) acc.push(<span key={"sep" + index} style={{whiteSpaceCollapse:"break-spaces"}}>, </span>);
-        acc.push(<FoodElement key={index} food={food}/>);
-        return acc;
-      }, [] as React.ReactNode[]);
-    return <div style={{display:"flex", alignItems:"center"}}>
-        {list}
+    return <div style={{display:"flex"}}>
+        {meal.map((food, index) => <React.Fragment key={food.name}>
+            {index == 0 || (<span style={{ marginLeft:2, whiteSpace: "break-spaces" }}>, </span>)}
+            <FoodElement food={food}/>
+        </React.Fragment>)}
     </div>
 }
 
-function LunchElement({lunch} : {lunch: Lunch}) {
-    const today = false;
-    const date = new Date(lunch.date.unix);
-    return (<div>
-        <div id={lunch.date.id} style={{display:"flex", gap:16}}>
-            <div style={{width:90}}>
-                <strong>{today ? "Tänään" : lunch.date.weekday + " " + date.getDate() + "." + (date.getMonth() + 1) + "."}</strong>
-            </div>
-            <div style={{display:"flex", flexDirection:"column", minWidth:200}}>
-                <FoodList meal={lunch.primary}/>
-                <FoodList meal={lunch.secondary}/>
-            </div>
-            <div style={{display:"flex", alignItems:"center"}}>
-                <FoodList meal={lunch.common}/>
-            </div>
-        </div>
-            <div style={{width:"100%", marginTop:18, height:2, background:"#00000055"}}></div>
-            </div>)
-}
+function FoodElement(props : {food: Food} & React.HTMLAttributes<HTMLDivElement>) {
+    const food = props.food;
 
-function FoodElement({food} : {food: Food}) {
     let primaryLabel = null;
     for (const label of food.labels) {
         if (label.startsWith("VEGA"))
@@ -70,11 +78,15 @@ function FoodElement({food} : {food: Food}) {
             primaryLabel = "K";
     }
     return (
-        <div id={food.name} key={food.name} style={{display:"flex", gap:8, flexDirection:"row", alignItems:"center"}}>
+        <div {...props} style={{display: "flex", gap: 8, flexDirection: "row", alignItems: "center"}}>
             <span>{food.name}</span>
             {primaryLabel == null ||
-                <div style={{background:"#00bb55", borderRadius:"30%", width:15, height:15, display:"inline-flex", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
-                    <span style={{color:"white", fontSize:8, width:"100%"}}>{primaryLabel}</span>
+                <div style={{
+                                display: "inline-flex", alignItems: "center", justifyContent: "center", textAlign: "center",
+                                width:14 + primaryLabel.length, outline: "#005248 1px solid", height: 15,
+                                background: "#379E8B", borderRadius:"30%",
+                            }}>
+                    <span style={{color: "white", fontWeight: 600, fontSize: 11 - primaryLabel.length, width: "100%"}}>{primaryLabel}</span>
                 </div>
             }
         </div>

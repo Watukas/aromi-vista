@@ -1,4 +1,4 @@
-import { Food, Lunch, useAromi } from "./aromi";
+import { Food, Lunch, useAromi } from "../utils/aromi";
 import React from "react";
 import { Feed } from "./SourceSelect";
 
@@ -19,16 +19,9 @@ function LandscapeScheduleView({feed, setFeed}: {feed: Feed, setFeed: (newSource
     </div>
 }
 
-function FoodList({meal} : {meal: Food[]}) : React.ReactNode {
-    return <div style={{display:"flex", flexDirection:"column", gap:4}}>
-        {meal.map(food  => <FoodElement key={food.name} food={food}/>)}
-    </div>
-}
-
 function LunchElement(props : {lunch: Lunch} & React.HTMLAttributes<HTMLDivElement>) {
     const today = false;
     const lunch = props.lunch;
-    const date = new Date(lunch.date.unix);
     return (
             <div {...props} style={{
                     display:"flex", flexDirection:"column", gap:16,
@@ -41,26 +34,30 @@ function LunchElement(props : {lunch: Lunch} & React.HTMLAttributes<HTMLDivEleme
             }}>
                 <div style={{display:"flex", padding:"0 16px 0 16px", flexDirection:"column", alignItems:"center"}}>
                     <strong>{today ? "Tänään" : lunch.date.weekdayLong}</strong>
-                    <span style={{fontWeight:200}}>{date.getDate() + "." + (date.getMonth() + 1) + "."}</span>
                 </div>
-                <div style={{display:"flex", flexDirection:"column", alignItems:"center", gap:8, height:80}}>
+                <div style={{display:"flex", flexDirection:"column", alignItems:"center", gap:8, height:"max-content"}}>
                     <FoodList key="primary" meal={lunch.primary}/>
                     <FoodList key="secondary" meal={lunch.secondary}/>
                 </div>
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center", paddingTop:16, borderTop:"#aaa 1px solid"}}>
-                    <FoodList key="common" meal={lunch.common}/>
+                    <FoodList key="common" compact={true} meal={lunch.common}/>
                 </div>
             </div>)
 }
 
-function FoodElement(props : {food: Food} & React.HTMLAttributes<HTMLDivElement>) {
-    const food = props.food;
+function FoodList({meal, compact} : {compact?: boolean, meal: Food[]}) : React.ReactNode {
+    return <div style={{display:"flex", flexDirection:"column", gap:4}}>
+        {meal.map(food  => <FoodElement key={food.name} compact={compact} food={food}/>)}
+    </div>
+}
+
+function FoodElement({compact, food, ...props} : {compact?: boolean, food: Food} & React.HTMLAttributes<HTMLDivElement>) {
 
     return (
         <div {...props} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
             <span style={{textAlign:"center", lineHeight:1}}>{food.name}</span>
             <div style={{display:"flex", gap:3, marginTop:3}}>
-                {food.labels.map(label => (<div key={label} style={{
+                {compact || food.labels.map(label => (<div key={label} style={{
                     background:"#379E8B", borderRadius:"30%", width:label.length * 2 + 9, height:11, outline:"black 1px solid", display:"inline-flex", alignItems:"center", justifyContent:"center", textAlign:"center"
                 }}>
                      <span style={{color:"white", textRendering:"optimizeLegibility", fontWeight:600, fontSize:8}}>{label.substring(0, 3)}</span>

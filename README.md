@@ -32,14 +32,27 @@ This project is in no way affiliated with <a href="https://www.cgi.com/fi/fi">CG
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* Search for the wanted restaurant from <a href="https://aromimenu.cgisaas.fi/EspooAromieMenus/FI/Default/ESPOO">Espoo Catering</a>.
-* Select the wanted display language from the top-right.
+### Espoo Catering
 
-* Pick the the menu of the current week for best results.
+* Go to the <a href="https://watukas.github.io/aromi-vista">the front page</a>.
 
-* Right-click on the RSS Icon
-<img style="margin-right:8px;transform:translate(4px, 4px)" src="https://aromimenu.cgisaas.fi/EspooAromieMenus/FI/Default/ESPOO/Kaitaankoulu/ThemePicture.aspx?Id=cf489641-3acc-462a-97f8-60e95c271a39&FileName=icon_rss.png" height=15/> and select "Copy link address"
-* Paste the URL into the form on <a href="https://watukas.github.io/aromi-vista">the front page</a>, configure additional options and press create feed
+* Find the desired school from the source chooser.
+
+  * If there are multiple groups, select one.
+
+* Configure additional options and press create feed.
+
+### The manual way
+
+* Search for the desired restaurant from an Aromi-based site.
+
+* Select the desired display language from the top-right corner.
+
+* Select the current week's menu for the best results.
+
+* Right-click the RSS icon
+<img style="margin-right:8px;transform:translate(4px, 4px)" src="https://aromimenu.cgisaas.fi/EspooAromieMenus/FI/Default/ESPOO/Kaitaankoulu/ThemePicture.aspx?Id=cf489641-3acc-462a-97f8-60e95c271a39&FileName=icon_rss.png" height=15/> and select 'Copy link address'.
+* Paste the URL into the form on <a href="https://watukas.github.io/aromi-vista">the front page</a>, configure additional options and click 'create feed'.
 
 [license-shield]: https://img.shields.io/github/license/watukas/aromi-vista.svg?style=for-the-badge
 [license-url]: https://github.com/watukas/aromi-vista/blob/main/LICENSE

@@ -1,5 +1,5 @@
-import { Food, Lunch, useAromi } from "./aromi";
-import { useScale } from "./App";
+import { Food, Lunch, useAromi } from "../utils/aromi";
+import { useScale } from "../App";
 import React, { useRef } from "react";
 import { Feed } from "./SourceSelect";
 
@@ -19,8 +19,8 @@ function ScheduleView({feed, setFeed}: {feed: Feed, setFeed: (newFeed: Feed | nu
         width: "100%",
     }}>
         <div ref={ref} style={{transition: "transform 0.3s ease", transform:`scale(${scale})`}}>
-            <div style={{display:"flex", width:"100%", height:"100%", justifyContent:"center"}}>
-                <h2 onClick={() => setFeed(null)} style={{ fontFamily:"Bebas Neue", padding:"0 0 24px 0", margin:0, cursor:"pointer", textDecoration:title.length > 5 ? "underline" : undefined, textAlign: "center" }}>
+            <div style={{display:"flex", width:"100%", height:"100%", justifyContent:"center", marginBottom:24}}>
+                <h2 onClick={() => setFeed(null)} style={{ fontFamily:"Bebas Neue", letterSpacing:1, padding:0, margin:0, cursor:"pointer", textAlign: "center" }}>
                     {title}
                 </h2>
             </div>

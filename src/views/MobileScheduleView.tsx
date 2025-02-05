@@ -1,27 +1,17 @@
-import { Food, Lunch, useAromi } from "./aromi";
+import { Food, Lunch, useAromi } from "../utils/aromi";
 import { Feed } from "./SourceSelect";
 
 function MobileScheduleView({feed, setFeed}: {feed: Feed, setFeed: (newFeed: Feed | null) => void}) {
     const content = useAromi(feed);
+    const title = content.url ? feed.title ?? content.name : '⌛';
 
     return <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-        <h2 style={{cursor:"pointer", textAlign:"center"}} onClick={() => setFeed(null)}>{content.name}</h2>
+        <h3 style={{margin:16, cursor:"pointer", textAlign:"center"}} onClick={() => setFeed(null)}>
+            {title}
+        </h3>
         <div style={{display:"flex", flexDirection:"column", gap:10}}>
             {content.schedule.map(lunch => <LunchElement key={lunch.date.id} lunch={lunch}/>)}
         </div>
-    </div>
-}
-
-function FoodList({meal} : {meal: Food[]}) : React.ReactNode {
-    if (meal.length < 2)
-        return meal.length == 1 ? <FoodElement food={meal[0]}/> : null;
-    const list = meal.reduce((acc, food, index) => {
-        if (index > 0) acc.push(<span key={"sep" + index} style={{whiteSpaceCollapse:"break-spaces"}}>, </span>);
-        acc.push(<FoodElement key={index} food={food}/>);
-        return acc;
-      }, [] as React.ReactNode[]);
-    return <div style={{display:"flex", alignItems:"center"}}>
-        {list}
     </div>
 }
 
@@ -34,10 +24,21 @@ function LunchElement({lunch} : {lunch: Lunch}) {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
             <FoodList key="primary" meal={lunch.primary}/>
             <FoodList key="secondary" meal={lunch.secondary}/>
-            <FoodList key="common" meal={lunch.common}/>
+            <FoodList key="common" meal={lunch.common} style={{marginTop:8}}/>
         </div>
-        <div style={{width:"100%", height:1, marginTop:10, background:"#00000055"}}></div>
+        <div style={{width:"calc(100% - 32px)", height:1, marginTop:10, background:"#00000055"}}></div>
     </div>)
+}
+
+function FoodList({meal, style, ...props} : {meal: Food[]} & React.HTMLAttributes<HTMLDivElement>) : React.ReactNode {
+    const list = meal.reduce((acc, food, index) => {
+        if (index > 0) acc.push(<span key={"sep" + index} style={{whiteSpaceCollapse:"break-spaces"}}>, </span>);
+        acc.push(<FoodElement key={index} food={food}/>);
+        return acc;
+      }, [] as React.ReactNode[]);
+    return <div {...props} style={{display:"flex", flexWrap:"wrap", justifyContent:"center", alignItems:"center", ...style}}>
+        {list}
+    </div>
 }
 
 function FoodElement({food} : {food: Food}) {

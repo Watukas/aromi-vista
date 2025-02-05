@@ -1,7 +1,7 @@
 import { XMLParser } from 'fast-xml-parser';
 import { useEffect, useState } from 'react';
-import { Feed } from './SourceSelect';
-import { isURL } from './App';
+import { Feed } from '../views/SourceSelect';
+import { isURL } from '../App';
 
 export interface Aromi {
   name: string;
@@ -44,11 +44,10 @@ const defaultProxy = atob("aHR0cHM6Ly9hcm9taS1wcm94eS53YXR1a2FzLndvcmtlcnMuZGV2L
 
 async function fetchProxied(feed: Feed) : Promise<Response> {
   if (!isURL(feed.source, true))
-    throw new Error("URL must begin with 'https://aromimenu.cgisaas.fi/'");
+    throw new Error("URL must begin with 'https://aromi'");
   if (window.location.hostname == 'localhost')
     return fetch('https://corsproxy.io/?url=' + encodeURIComponent(feed.source));
   const proxy = feed.proxy ?? defaultProxy;
-
   const url = proxy.endsWith("/") ? feed.source : encodeURIComponent(feed.source);
   return fetch(proxy + url);
 }
@@ -72,10 +71,12 @@ function loadContent(url: string, xmlText: string) : Aromi {
   const areEqual = (obj1: Food, obj2: Food) => obj1.name == obj2.name;
 
   const item = xml.rss.channel.item;
-  const items = Array.isArray(item) ? item : [item];
+  const items = item ? (Array.isArray(item) ? item : [item]) : [];
 
   const lunches: Lunch[] = items.map((o: any) => {
     const array = o.description.split("<br><br>");
+    if (array.length < 2)
+      return {date:parseDate(o.title), primary:format(array[0].substring(Math.max(0, array[0].indexOf(":") + 1))), secondary:[], common:[]} as Lunch;
     const mainCourse = format(array[1]);
     const veganCourse = format(array[0]);
 
@@ -156,16 +157,22 @@ function parseDate(date: string) : ParsedDate {
 function isExpired(aromi: Aromi) {
   if (aromi.schedule.length == 0)
     return true;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return aromi.schedule.every(lunch => {
+  const offset = Math.max(0, (Number(new URL(aromi.url.toLowerCase()).searchParams?.get("datemode")) ?? 0) - 1);
+  const week = weekNumber(new Date()) + offset;
+  return aromi.schedule.some(lunch => {
     const date = new Date(lunch.date.unix);
-    date.setHours(0, 0, 0, 0);
-    return today > date;
+    return week != weekNumber(date);
   });
 }
 
-// Example Usage
+function weekNumber(date: Date): number {
+  const d = new Date(date);
+  d.setDate(d.getDate() + 4 - (d.getDay() || 7));
+  const yearStart = new Date(d.getFullYear(), 0, 1);
+  const days = Math.floor((d.getTime() - yearStart.getTime()) / (1000 * 60 * 60 * 24));
+  return Math.ceil((days + 1) / 7);
+}
+
 export function useAromi(feed: Feed) : Aromi {
   const [state, setState] = useState<Aromi>(() => {
     const cached = loadCache(feed.source);

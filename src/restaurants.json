@@ -1,0 +1,705 @@
+[
+	{
+		"id": "Albergaskola",
+		"name": "Alberga skola",
+		"groups": [
+			{ "id": "f456dbb4-4067-47da-a614-91309e9fb510", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Aurorakoulu",
+		"name": "Auroran koulu",
+		"groups": [
+			{ "id": "331c2a56-ebff-46b5-b8cf-0b755eea4c98", "name": "Alakoulu" },
+			{ "id": "73cbab9a-f0ae-4c10-8cc3-6db1cac5ba40", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Eestinkallionkoulu",
+		"name": "Eestinkallion koulu",
+		"groups": [
+			{ "id": "0aeb590f-5696-4ba9-b66b-94dc49270e61", "name": "Alakoulu" },
+			{ "id": "ad28f89b-bc7f-4aed-a5c3-50eb9afe8ebf", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Espoonlahdenaluekeittio",
+		"name": "Espoonlahden aluekeittiö koulu",
+		"groups": [
+			{ "id": "e8841532-a855-4262-a10b-410da0be8bbd", "name": "Alakoulu" },
+			{ "id": "e1a3030d-04d6-4f49-ba3d-5a314075b20c", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Espoonlahdenkoulujalukio",
+		"name": "Espoonlahden koulu ja lukio",
+		"groups": [
+			{ "id": "fea40b26-c945-41c5-94c8-6aa4b98025a4", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Etelatapiolanlukio",
+		"name": "Etelä-Tapiolan lukio",
+		"groups": [
+			{ "id": "dfcd7daa-3dec-4a2c-b15d-405f1426f12b", "name": "Lukio" }
+		]
+	},
+	{
+		"id": "Finnoskola",
+		"name": "Finno skola",
+		"groups": [
+			{
+				"id": "a2fa5eb3-d4e6-4dc8-97be-3741d04a8279",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "387e6313-0c48-4e4d-85d8-908086a7180b", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "friisilanko",
+		"name": "Friisilän koulu",
+		"groups": [
+			{ "id": "52cde050-b03f-40a9-8ab3-e2ed8bdb09e3", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Hansakallionkoulu",
+		"name": "Hansakallion koulu",
+		"groups": [
+			{ "id": "892333bf-48c5-45ba-87ba-f2188699c2a8", "name": "Alakoulu" },
+			{
+				"id": "7ef718bb-a11e-4f53-abbd-93b885735c40",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "6b751615-85d1-476c-a935-b58ed7a1d6b8", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Haukilahdenkoulu",
+		"name": "Haukilahden koulu",
+		"groups": [
+			{ "id": "6a1a0eb7-0c29-4d05-8cb2-43f5239d8f20", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Haukilahdenlukio",
+		"name": "Haukilahden lukio",
+		"groups": [
+			{ "id": "c53812d0-4f5f-432a-94d4-6963f28d8623", "name": "Lukio" }
+		]
+	},
+	{
+		"id": "Iivisniemenkoulu",
+		"name": "Iivisniemen koulu",
+		"groups": [
+			{ "id": "cadccb6d-72aa-486e-8fb3-6418a6571bbf", "name": "Alakoulu" },
+			{ "id": "63941cf9-f8eb-4328-a0b5-c5bf1272b15f", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Jalavapuistonkoulu",
+		"name": "Jalavapuiston koulu",
+		"groups": [
+			{ "id": "9f2db0d5-0428-4176-b9fd-e5724116b364", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Jousenkaarenkoulu",
+		"name": "Jousenkaaren koulu",
+		"groups": [
+			{ "id": "ca21d8ca-4f0e-4bb5-8584-9cab139b0142", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Jupperinkoulu",
+		"name": "Jupperin koulu",
+		"groups": [
+			{ "id": "5d002ace-1d77-4c3e-8b38-a0845f310599", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Juvanpuistonkoulu",
+		"name": "Juvanpuiston koulu",
+		"groups": [
+			{
+				"id": "3d2d2c24-1906-4a77-bbef-7ed431618355",
+				"name": "Ala- ja yläkoulu"
+			},
+			{
+				"id": "ae46ebd0-ba57-4c80-bb95-ea8f260bcd7b",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "b95c30eb-31f6-414d-a2f7-2973c7f6e3fd", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Jarvenperankoulu",
+		"name": "Järvenperän koulu",
+		"groups": [
+			{
+				"id": "6154adf0-8c6c-43d2-87dc-981553307283",
+				"name": "Ala- ja yläkoulu"
+			}
+		]
+	},
+	{
+		"id": "Kaitaankoulu",
+		"name": "Kaitaan koulu ",
+		"groups": [
+			{ "id": "a0aa31e6-7213-40e7-acd0-9116fe7d6e7e", "name": "Lukio" }
+		]
+	},
+	{
+		"id": "Kalajarvenkoulu",
+		"name": "Kalajärven koulu",
+		"groups": [
+			{ "id": "96ce6679-b838-482d-a011-825bc98702f8", "name": "Alakoulu" },
+			{ "id": "72ea037d-319d-4114-9afa-9b54612a7027", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Kantokaskenkoulu",
+		"name": "Kantokasken koulu",
+		"groups": [
+			{ "id": "20cf18dc-b4d3-4814-b71e-664fe8d5af39", "name": "Alakoulu" },
+			{ "id": "4c535126-5081-406d-abb6-5ae8b46fdb11", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Karakallionkoulu",
+		"name": "Karakallion koulu",
+		"groups": [
+			{ "id": "47c6e13c-fb05-4705-85a4-424ec8a9674b", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Karamzinkoulu",
+		"name": "Karamzin koulu",
+		"groups": [
+			{ "id": "7a4eb500-c070-40fe-9226-43bfc3b19fa2", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Karhusuonkoulu",
+		"name": "Karhusuon koulu",
+		"groups": [
+			{ "id": "59b5fc5c-cbbe-4e39-8c65-c01a19134df1", "name": "Alakoulu" },
+			{
+				"id": "55e013c3-44ff-4fbd-9d0f-1be6b4e61175",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "b99bc9f0-257f-4718-9c43-8e2ed57b13f5", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Kauklahdenkoulu",
+		"name": "Kauklahden koulu",
+		"groups": [
+			{ "id": "41daeae6-bd1f-4986-806c-b24966e2a325", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "keinumaenkoulu",
+		"name": "Keinumäen koulu",
+		"groups": [
+			{
+				"id": "a6cc2990-e07e-45ec-a03e-d082f4b6aaa9",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "74dc425e-1152-4cc9-9824-d761f92aad37", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Kirkkojarvenkoulu",
+		"name": "Kirkkojärven koulu",
+		"groups": [
+			{
+				"id": "dded90fd-7b0f-404b-8f52-63565bc3054e",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "c184411c-c4ca-4cd9-9883-a760030e3e52", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Kirstinkoulu",
+		"name": "Kirstin koulu",
+		"groups": [
+			{ "id": "8a0aa68d-fff8-4789-a70b-04a52e49fa4f", "name": "Alakoulu" },
+			{
+				"id": "cc150436-007a-41d8-9d07-ff68c3618c0b",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "f46f8482-7af2-431c-b017-1020ae34e34d", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Kivimiehenkoulu",
+		"name": "Kivimiehen koulu",
+		"groups": [
+			{ "id": "05e2f4ba-51a9-47f8-818d-331f1d9d6316", "name": "Alakoulu" },
+			{
+				"id": "dd510bc1-c03f-4546-b124-3ac2e8b7b5e1",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "33511626-08d7-468d-87ff-0a09771171c4", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Koulumestarinkoulu",
+		"name": "Koulumestarin koulu",
+		"groups": [
+			{ "id": "aaeae4e3-e228-4a5f-bd5b-92417cfd6712", "name": "Alakoulu" },
+			{ "id": "c8a54137-81b9-47b6-b618-5666285a4b94", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "kuitinmaenkoulu1",
+		"name": "Kuitinmäen koulu 1",
+		"groups": [
+			{ "id": "8a33edf5-4b6e-47c2-994c-9a3ee105de4f", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Kuitinmakikoulu2",
+		"name": "Kuitinmäki koulu 2",
+		"groups": [
+			{
+				"id": "b7a4a138-d152-4c56-80d4-043d1a23e37e",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "cf8dfbc6-a219-4eb3-9f72-9c990d7d0dc9", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Kungsgardskola",
+		"name": "Kungsgård skola",
+		"groups": [
+			{ "id": "b259dbab-2472-4797-bb22-6f5542c4749b", "name": "Alakoulu" },
+			{
+				"id": "551cf75c-57e8-4641-ac4f-327c5a290148",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "c7c9fa3b-e7c9-4015-a4d6-7bda4fbb5701", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Laaksolahtitalokoulu",
+		"name": "Laaksolahtitalo koulu",
+		"groups": [
+			{ "id": "75d593e8-956a-4d25-9cdd-6138555e05f2", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Lagstadskola",
+		"name": "Lagstads skola",
+		"groups": [
+			{ "id": "11d8e44b-a54e-4f4d-8535-bfcdaa9d3cc9", "name": "Alakoulu" },
+			{ "id": "ff9db8e3-a515-48e7-80b7-8dd13a1c7a79", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "LahnuksenKO",
+		"name": "Lahnuksen koulu",
+		"groups": [
+			{ "id": "f5570179-fbb9-4ff0-bd1f-ec510eea194b", "name": "Alakoulu" },
+			{
+				"id": "bb6018e4-dcdc-4047-adf0-2b39ee824593",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "ac1f8418-4f09-4e20-8db3-a0272d275cb8", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Laurinlahdenkoulu",
+		"name": "Laurinlahden koulu",
+		"groups": [
+			{ "id": "c5b96ef9-e3fd-4a04-9f78-e24712e935d5", "name": "Alakoulu" },
+			{ "id": "8bf4414e-ffe4-494d-94f3-80f547a6caec", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Monikonkoulukeskus",
+		"name": "Leppävaaran koulu",
+		"groups": [
+			{
+				"id": "a1caef20-92e0-4bd1-a6ae-2af5718a8b92",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "ce788614-67f0-4a63-a089-68ef74f9c964", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Lintulaaksonkoulu",
+		"name": "Lintulaakson koulu",
+		"groups": [
+			{ "id": "15b46ac6-f845-477e-8efd-67e0d093d67b", "name": "Alakoulu" },
+			{ "id": "bb3497dc-50b0-4dfa-b8a7-dbac90ea0bc7", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Lintumetsankoulu",
+		"name": "Lintumetsän koulu",
+		"groups": [
+			{ "id": "bf4e16af-ddcc-4e46-9733-b424f19e3939", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Lintumetsankouluparakki",
+		"name": "Lintumetsän kouluparakki ",
+		"groups": [
+			{ "id": "d130ee8a-e0f2-479c-a38f-edb37c734b82", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Lintuvaarankoulu",
+		"name": "Lintuvaaran koulu",
+		"groups": [
+			{ "id": "2652ccf1-5777-43f0-aa06-3b8a3461c48d", "name": "Esiopetus" },
+			{ "id": "221d8290-97ee-442f-b604-11b0f6dd2346", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Lahderannankoulu",
+		"name": "Lähderannan koulu",
+		"groups": [
+			{ "id": "949eb5fd-1ca9-4588-a488-e64dd28207d4", "name": "Alakoulu" },
+			{ "id": "a2585975-651d-4947-8f15-151c76fdbfb8", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Maininginkoulu",
+		"name": "Mainingin koulu",
+		"groups": [
+			{
+				"id": "3524d17a-63cb-400e-81fa-17d189c76c9e",
+				"name": "Ala- ja yläkoulu"
+			},
+			{
+				"id": "871272d8-1ea5-4c4b-87ce-c8c721c00c91",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "f433bd67-a6b1-4984-b2c2-aec01ac35dfd", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Martinkallionkoulu",
+		"name": "Martinkallion koulu",
+		"groups": [
+			{ "id": "ac82548a-d848-49bf-b96c-82a06ddfb8be", "name": "Esiopetus" },
+			{
+				"id": "910e622d-32fe-4fcd-9511-0d93ada70615",
+				"name": "Ala- ja yläkoulu"
+			}
+		]
+	},
+	{
+		"id": "Matinkylanlukio",
+		"name": "Matinkylän lukio",
+		"groups": [
+			{ "id": "5f2da961-2a3f-40aa-a9cc-f3d5684fc865", "name": "Lukio" }
+		]
+	},
+	{
+		"id": "Matinlahdenkoulu",
+		"name": "Matinlahden koulu",
+		"groups": [
+			{ "id": "cfa4edbf-8f5a-4b1f-a2cd-be3b0955c0f2", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Mattlidensskola",
+		"name": "Mattlidens skola",
+		"groups": [
+			{
+				"id": "fc9df179-678c-4a9f-be8e-fadf02f5c625",
+				"name": "Ala- ja yläkoulu"
+			},
+			{
+				"id": "e565c037-6c7a-47d8-9c08-f4ae3726eb17",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "f944fce3-3262-469f-a3db-92d1929bb3b8", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Meritorinkoulu",
+		"name": "Meritorin koulu",
+		"groups": [
+			{ "id": "38518334-2eec-4ac3-8223-a6902b95a10b", "name": "Alakoulu" },
+			{ "id": "d8c91533-135b-40a1-a57f-75a1a6108a6b", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Mikkelankoulu",
+		"name": "Mikkelän koulu",
+		"groups": [
+			{ "id": "a7ee4184-8f2e-4452-a775-002e9b50cfdb", "name": "Alakoulu" },
+			{ "id": "d50e1b6a-de20-4111-8161-e0c95f96a865", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Nauriskaskenkoulu",
+		"name": "Nauriskasken koulu",
+		"groups": [
+			{ "id": "2ddbabef-7ebd-4c9c-a49e-1844f37cd2cb", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Niipperinkoulu",
+		"name": "Niipperin koulu",
+		"groups": [
+			{ "id": "4d103b12-fd6b-422d-91fc-769b3ac9b30c", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Niittykummunkoulu",
+		"name": "Niittykummun koulu ",
+		"groups": [
+			{ "id": "c9a3287f-5b79-4395-a0d7-8b25394b3b58", "name": "Alakoulu" },
+			{ "id": "0b115455-2a6a-42a4-8653-8a2e5c50b74a", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Noykkionkoulu",
+		"name": "Nöykkiön koulu",
+		"groups": [
+			{ "id": "b476e9ce-5c48-47fe-a7c9-ff95ff511e44", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Noykkionlaaksonkoulu",
+		"name": "Nöykkiönlaakson koulu",
+		"groups": [
+			{ "id": "92ab3f7c-4e49-4fb4-9f94-c59047206240", "name": "Alakoulu" },
+			{ "id": "60541b54-ed6f-4cd9-b03b-b928ae7f0262", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Olarinkoulu",
+		"name": "Olarin koulu",
+		"groups": [
+			{
+				"id": "7f329e52-0787-4e2b-ac2c-73f72307273a",
+				"name": "Ala- ja yläkoulu"
+			}
+		]
+	},
+	{
+		"id": "Opinmakikoulukampus",
+		"name": "Opinmäen koulukampus",
+		"groups": [
+			{
+				"id": "65c6c2df-fdf3-4ae4-ac0a-a8ebef79fc02",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "a368cc91-4603-41a1-9319-a2cacfcb915c", "name": "Päiväkoti" }
+		]
+	},
+	{
+		"id": "Pakankylankoulu",
+		"name": "Pakankylän koulu",
+		"groups": [
+			{ "id": "98cf65cb-6a18-4243-b3e4-9955490801a8", "name": "Alakoulu" },
+			{ "id": "449fd917-14a7-4e0c-a794-e488a0596798", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Perkkaankoulu",
+		"name": "Perkkaan koulu",
+		"groups": [
+			{ "id": "457669e8-acc8-4f5e-be64-b55eecf99db6", "name": "Alakoulu" },
+			{ "id": "da9a3b94-0e7c-49e5-8d00-3b3c39c82b3e", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Postipuunkoulu",
+		"name": "Postipuun koulu",
+		"groups": [
+			{
+				"id": "bb411cbc-e6a4-4511-b7a5-d4e26cf7f2f6",
+				"name": "Ala- ja yläkoulu"
+			}
+		]
+	},
+	{
+		"id": "Paivankehrankoulu",
+		"name": "Päivänkehrän koulu",
+		"groups": [
+			{ "id": "f922abdc-9c8f-48da-b30d-0659f5fe836e", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "PaivankehraKomeetta",
+		"name": "Päivänkehrän koulu Komeetan toimipiste",
+		"groups": [
+			{ "id": "4106ac53-e553-4d2d-9b38-747355bd806f", "name": "Alakoulu" }
+		]
+	},
+	{
+		"id": "Rastaalankoulu",
+		"name": "Rastaalan koulu",
+		"groups": [
+			{ "id": "025e7ce5-c3af-4d35-b8ad-dce061fbcbb3", "name": "Alakoulu" },
+			{ "id": "2a5616e2-e017-416f-bc3b-e73389579df5", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Ruusutorppakoulu",
+		"name": "Ruusutorpan koulu",
+		"groups": [
+			{
+				"id": "e6926c9b-a084-4ebc-96d2-8c24bdf2a609",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "ba039488-9d7c-4114-ae40-43b5c9edf322", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "rodskogskola",
+		"name": "Rödskog skola ",
+		"groups": [
+			{ "id": "465043cf-b4af-44d2-a2a6-ac2b5710d576", "name": "Alakoulu" },
+			{
+				"id": "807aace0-e0c1-4a70-bbec-fabe99e445be",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "6f40351f-a075-4ff1-8ac5-0d87a67e89b3", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Saarnilaaksonkoulu",
+		"name": "Saarnilaakson koulu",
+		"groups": [
+			{ "id": "be621b59-984d-49b2-9b66-bc1dd86b8543", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "saunalahdenkoulu",
+		"name": "Saunalahden koulu",
+		"groups": [
+			{
+				"id": "75593e45-b695-4124-a89b-14552fa46cdd",
+				"name": "Ala- ja yläkoulu"
+			}
+		]
+	},
+	{
+		"id": "Soukankoulu",
+		"name": "Soukan koulu",
+		"groups": [
+			{ "id": "fe09eb31-ebea-4bf4-b542-b837e92d1a5a", "name": "Alakoulu" },
+			{ "id": "51c8e4fa-6cbb-4213-b5ef-97607ccbe1a2", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Storangenskolaalak",
+		"name": "Storängen skola alakoulu",
+		"groups": [
+			{ "id": "835e7a8a-2e39-4c60-adb4-fff2a1c6bae7", "name": "Alakoulu" },
+			{ "id": "e427ffb2-4f15-4bb3-a203-eb7a35465e99", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Storangenskolaylakoulu",
+		"name": "Storängen skola yläkoulu",
+		"groups": [
+			{ "id": "701fbea2-78e5-4d7e-96af-148f83a5956c", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Sunankoulu",
+		"name": "Sunan koulu",
+		"groups": [
+			{ "id": "2763b90b-72f8-422b-b85a-84e1339f4750", "name": "Alakoulu" },
+			{ "id": "fc770218-ff10-46e1-bdba-558827f4df61", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Tapiolankoulu",
+		"name": "Tapiolan koulu ja lukio",
+		"groups": [
+			{ "id": "a63514bf-e2fc-4bd4-978f-524edbbfcb82", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Tiistilankoulu",
+		"name": "Tiistilän koulu",
+		"groups": [
+			{
+				"id": "48e1038c-0df2-41ec-8bf4-f2c94d0e25e9",
+				"name": "Ala- ja yläkoulu"
+			},
+			{ "id": "8bd127eb-7ee1-415d-a60f-fc4f17c01338", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Toppelundinkoulu",
+		"name": "Toppelundin koulu",
+		"groups": [
+			{ "id": "988c1760-c837-4224-812e-dc8bed5f7853", "name": "Alakoulu" },
+			{ "id": "33bdfe47-7edd-4e39-b117-ce3730a5b67e", "name": "Iltapäiväkerho" }
+		]
+	},
+	{
+		"id": "Tuomarilankoulu",
+		"name": "Tuomarilan koulu",
+		"groups": [
+			{ "id": "d5ae889f-cf70-4768-9e9f-385db7412cb1", "name": "Alakoulu" },
+			{
+				"id": "8d05210b-3a87-4161-9c20-a729d5f9d3ed",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "5896b796-5283-4333-b959-baec23b07020", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Vanttilankoulu",
+		"name": "Vanttilan koulu",
+		"groups": [
+			{
+				"id": "96506c57-c34d-4ad7-9168-12e1c822663c",
+				"name": "Ala- ja yläkoulu"
+			},
+			{
+				"id": "b6435f9d-4aff-4e96-ad16-04e7398f8bd4",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "90a35eaf-7d65-47e8-b64e-d710bc33ce0d", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Westendinpuistonkoulu",
+		"name": "Westendinpuiston koulu",
+		"groups": [
+			{ "id": "a56c2499-6764-4757-8faf-b6b4ede08d40", "name": "Alakoulu" },
+			{ "id": "ba9bf132-a098-46b6-a3c6-1c0b241c3d36", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Viherlaaksoalakoulu",
+		"name": "Viherlaakson alakoulu",
+		"groups": [
+			{ "id": "41a578af-3955-4ee7-989d-9bcb1913fa14", "name": "Alakoulu" },
+			{ "id": "b3c3a8e1-d3a7-48e5-a142-3b010050b9f7", "name": "Esiopetus" }
+		]
+	},
+	{
+		"id": "Viherlaaksonkoululukio",
+		"name": "Viherlaakson koulu ja lukio",
+		"groups": [
+			{ "id": "d0736a61-6562-4609-b790-31ec6e450856", "name": "Ylakoulu" }
+		]
+	},
+	{
+		"id": "Ymmerstankoulu",
+		"name": "Ymmerstan koulu",
+		"groups": [
+			{ "id": "04ff7694-18ab-47e6-a2a6-22a3a61819cf", "name": "Alakoulu" },
+			{
+				"id": "c90bcdb3-d94a-447e-86d2-87d042b88701",
+				"name": "Iltapäiväkerho"
+			},
+			{ "id": "86383cee-f080-4dea-a94a-b115032f8600", "name": "Esiopetus" }
+		]
+	}
+]
